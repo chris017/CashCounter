@@ -5,7 +5,7 @@ import numpy as np
 import cv2
 
 # Initialize YOLO model
-model = YOLO("best.pt")
+model = YOLO("best.torchscript")
 
 # Page title
 st.set_page_config(page_title='Coin Classification', page_icon='💸')
