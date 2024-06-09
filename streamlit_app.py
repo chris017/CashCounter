@@ -5,7 +5,7 @@ import numpy as np
 import cv2
 
 # Initialize YOLO model
-model = YOLO("yolov8n.pt")
+model = YOLO("best.pt")
 
 # Page title
 st.set_page_config(page_title='Coin Classification', page_icon='💸')
