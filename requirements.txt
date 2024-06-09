@@ -4,3 +4,5 @@ scikit-learn
 altair>=4.0
 ultralytics>=8.2.28
 opencv-python>=4.10.0.82
+dill>=0.3.8
+PyTorch>=1.7
