@@ -3,5 +3,4 @@ pandas>=1.3.0
 scikit-learn
 altair>=4.0
 opencv-python>=4.10.0.82
-git+https://github.com/THU-MIG/yolov10.git
 huggingface-hub
