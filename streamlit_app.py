@@ -41,7 +41,7 @@ if uploaded_images:
             img_array = cv2.cvtColor(img_array, cv2.COLOR_GRAY2RGB)
         elif img_array.shape[2] == 4:  # RGBA to RGB
             img_array = cv2.cvtColor(img_array, cv2.COLOR_RGBA2RGB)
-
+        
         # Perform object detection
         try:
             results = model(img_array)
@@ -56,13 +56,17 @@ if uploaded_images:
             if len(results[0].boxes) == 0:
                 st.write("No objects detected in the image.")
             else:
-                st.write("Detected objects:")
+                total = 0
                 for box in results[0].boxes:
                     x1, y1, x2, y2 = box.xyxy[0].numpy()
                     class_id = int(box.cls)
                     score = box.conf[0].numpy()
                     class_name = results[0].names[class_id]
-                    st.write(f"Class: {class_name}, Score: {score:.2f}, Box: [{x1:.2f}, {y1:.2f}, {x2:.2f}, {y2:.2f}]")
+                    total += int(class_name)
+                total = total / 100
+                total = str(total)
+                st.write(f"Total: {total}€")
+                
         except Exception as e:
             st.error(f"Error processing image {image_file.name}: {e}")
 else:
