@@ -71,5 +71,6 @@ if uploaded_images:
                 
         except Exception as e:
             st.error(f"Error processing image {image_file.name}: {e}")
+            st.write(e)
 else:
     st.warning('👈 Upload images to get started!')
