@@ -1,11 +1,11 @@
 import streamlit as st
 from PIL import Image
-from ultralytics import YOLO
+from ultralytics import YOLOv10
 import numpy as np
 import cv2
 
 # Initialize YOLO model
-model = YOLO("best.torchscript")
+model = YOLOv10("best.torchscript")
 
 # Page title
 st.set_page_config(page_title='Coin Classification', page_icon='💸')
@@ -60,9 +60,11 @@ if uploaded_images:
                 for box in results[0].boxes:
                     x1, y1, x2, y2 = box.xyxy[0].numpy()
                     class_id = int(box.cls)
+                    st.write(box.cls)
                     score = box.conf[0].numpy()
-                    class_name = results[0].names[class_id]
-                    total += int(class_name)
+                    if score > 0.7:
+                        class_name = results[0].names[class_id]
+                        total += int(class_name)
                 total = total / 100
                 total = str(total)
                 st.write(f"Total: {total}€")
