@@ -4,4 +4,7 @@ scikit-learn
 altair>=4.0
 opencv-python>=4.10.0.82
 huggingface-hub
+twilio
+av
+streamlit-webrtc
 git+https://github.com/THU-MIG/yolov10.git
