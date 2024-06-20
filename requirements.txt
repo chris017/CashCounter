@@ -4,3 +4,4 @@ scikit-learn
 altair>=4.0
 opencv-python>=4.10.0.82
 huggingface-hub
+git+https://github.com/THU-MIG/yolov10.git
