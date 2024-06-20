@@ -12,7 +12,7 @@ def total_sum(results) -> str:
 
 
 def display_webcam_feed(model):
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(1)
     if not cap.isOpened():
         st.error("Error: Could not open webcam.")
         return
