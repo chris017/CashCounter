@@ -34,19 +34,6 @@ def video_frame_callback(frame: av.VideoFrame) -> av.VideoFrame:
     
     return av.VideoFrame.from_ndarray(img, format="bgr24")
 
-# WebRTC streamer setup
-webrtc_ctx = webrtc_streamer(
-    key="object-detection",
-    mode=WebRtcMode.SENDRECV,
-    rtc_configuration={
-        "iceServers": get_ice_servers(),
-        "iceTransportPolicy": "relay",
-    },
-    video_frame_callback=video_frame_callback,
-    media_stream_constraints={"video": {"frameRate": 10}, "audio": False},
-    async_processing=True,
-)
-
 # Function to process uploaded images
 def process_uploaded_images(model, uploaded_images):
     for image_file in uploaded_images:
@@ -81,21 +68,34 @@ def main():
                 - OpenCV for webcam access
         ''', language='markdown')
 
-    st.sidebar.header('Upload Images')
-    uploaded_images = st.sidebar.file_uploader("", type=["png", "jpg", "jpeg"], accept_multiple_files=True)
+    st.sidebar.header('Sources')
+    option = st.sidebar.radio('Choose an option:', ['Webcam', 'Upload Images'])
 
-    
-    if webrtc_ctx.state.playing:
-        labels_placeholder = st.empty()
-        while True:
-            if not result_queue.empty():
-                total = result_queue.get()
-                labels_placeholder.write(f"Total: {total}€")
+    if option == 'Webcam':
+        st.subheader('Webcam Feed')
+        webrtc_ctx = webrtc_streamer(
+            key="object-detection",
+            mode=WebRtcMode.SENDRECV,
+            rtc_configuration={
+                "iceServers": get_ice_servers(),
+                "iceTransportPolicy": "relay",
+            },
+            video_frame_callback=video_frame_callback,
+            media_stream_constraints={"video": {"frameRate": 10}, "audio": False},
+            async_processing=True,
+        )
+        if webrtc_ctx.state.playing:
+            labels_placeholder = st.empty()
+            while True:
+                if not result_queue.empty():
+                    total = result_queue.get()
+                    labels_placeholder.write(f"Total: {total}€")
 
-    if uploaded_images:
-        process_uploaded_images(model, uploaded_images)
-    else:
-        st.warning('👈 Upload images to get started!')
+    elif option == 'Upload Images':
+        st.subheader('Upload Images')
+        uploaded_images = st.file_uploader("", type=["png", "jpg", "jpeg"], accept_multiple_files=True)
+        if uploaded_images:
+            process_uploaded_images(model, uploaded_images)
 
 if __name__ == "__main__":
     main()
