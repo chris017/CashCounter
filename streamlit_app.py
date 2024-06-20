@@ -108,12 +108,7 @@ if uploaded_images:
     for image_file in uploaded_images:
         img = Image.open(image_file)
         img_array = np.array(img)
-
-        # Ensure the image is in the correct format (3 channels)
-        if len(img_array.shape) == 2:
-            img_array = cv2.cvtColor(img_array, cv2.COLOR_GRAY2RGB)
-        elif img_array.shape[2] == 4:  # RGBA to RGB
-            img_array = cv2.cvtColor(img_array, cv2.COLOR_RGBA2RGB)
+        img_array = cv2.cvtColor(img_array, cv2.COLOR_BGR2RGB)
         
         # Perform object detection
         try:
