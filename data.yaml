@@ -1,0 +1,21 @@
+
+
+## Train/val/test sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]
+path: ./data  # dataset root dir
+train: images/train  # train images (relative to 'path') 4 images
+val: images/val  # val images (relative to 'path') 4 images
+test:  # test images (optional)
+# Classes
+names:
+  0: 5000
+  1: 2000
+  2: 1000
+  3: 500
+  4: 200
+  5: 100
+  6: 50
+  7: 20
+  8: 10
+  9: 5
+  10: 2
+  11: 1
