@@ -7,10 +7,10 @@ import numpy as np
 import queue
 from streamlit_webrtc import WebRtcMode, webrtc_streamer
 from turn import get_ice_servers
+import os
 
 # Initialize the YOLOv10 model
-model = YOLOv10("best.torchscript")
-
+model = YOLOv10(f"./model/runs/detect/train/weights/best.torchscript", task="detect")
 # Queue to handle results between threads
 result_queue = queue.Queue()
 
