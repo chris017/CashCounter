@@ -13,7 +13,7 @@ import torch
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # Initialize the YOLOv10 model
-model = YOLOv10(f"./model/runs/detect/train/weights/best.torchscript", task="detect").to(device)
+model = YOLOv10(f"./model/runs/detect/train/weights/best.pt", task="detect", device=device)
 # Queue to handle results between threads
 result_queue = queue.Queue()
 
