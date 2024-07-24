@@ -8,19 +8,12 @@ Welcome to the Cash Counter app! This Streamlit application is designed to ident
 - **Live Webcam Classification**: Use your webcam to classify Euro currency in real-time.
 - **Detailed Analysis**: Get detailed results of detected coins and banknotes with their respective values.
 - **Demo Video**: Watch the demo video available in the repository to see the app in action.
-- **Research Paper**: Access the accompanying research paper for an in-depth understanding of the technology and methods used.
 
 ## Demo Video
 
 Check out our demo video to see how the app works:
 
 [Demo Video](showcase.mov)
-
-## Research Paper
-
-For a detailed explanation of the technology and methods used in this app, refer to our research paper:
-
-[Research Paper](link-to-research-paper)
 
 ## How to Use
 
@@ -55,7 +48,5 @@ For a detailed explanation of the technology and methods used in this app, refer
 - **Streamlit**: For building the web app.
 - **OpenCV**: For image processing and currency recognition.
 - **TensorFlow**: For machine learning and currency classification.
-
-## Contributing
 
 
