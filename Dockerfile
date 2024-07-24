@@ -11,9 +11,10 @@ COPY . .
 
 # Install OS packages
 RUN if [ -f packages.txt ]; then \
-        apt update && \
-        apt upgrade -y && \
-        xargs apt install -y < packages.txt; \
+        apt-get update && \
+        apt-get upgrade -y && \
+        apt-get install -y --fix-missing && \
+        xargs apt-get install -y < packages.txt; \
     fi
 
 # Install Python packages
