@@ -19,7 +19,7 @@ Check out our demo video to see how the app works:
 
 1. **Clone the Repository**:
     ```bash
-    git clone https://github.com/yourusername/euro-currency-recognizer.git
+    git clone https://github.com/chris017/CashCounter.git
     cd euro-currency-recognizer
     ```
 
